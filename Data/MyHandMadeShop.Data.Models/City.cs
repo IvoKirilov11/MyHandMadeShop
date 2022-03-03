@@ -9,6 +9,10 @@ namespace MyHandMadeShop.Data.Models
     {
         public string Name { get; set; }
 
+        public int CountryId { get; set; }
+
+        public Country Country { get; set; }
+
         public string CustomerId { get; set; }
 
         public virtual ApplicationUser Customer { get; set; }

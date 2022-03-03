@@ -1,16 +1,14 @@
 ﻿namespace MyHandMadeShop.Data
 {
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+    using MyHandMadeShop.Data.Common.Models;
+    using MyHandMadeShop.Data.Models;
     using System;
     using System.Linq;
     using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
-
-    using MyHandMadeShop.Data.Common.Models;
-    using MyHandMadeShop.Data.Models;
-
-    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -35,6 +33,8 @@
         public DbSet<City> Cities { get; set; }
 
         public DbSet<ItemType> ItemTypes { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

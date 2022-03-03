@@ -16,6 +16,8 @@ namespace MyHandMadeShop.Data.Models
 
         public decimal Price { get; set; }
 
+        public string Image { get; set; }
+
         public string ItemTypeId { get; set; }
 
         public ItemType ItemType { get; set; }
