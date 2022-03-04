@@ -36,4 +36,8 @@
     <ProjectReference Include="..\MyHandMadeShop.Web.Infrastructure\MyHandMadeShop.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\MyHandMadeShop.Web.ViewModels\MyHandMadeShop.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Views\Dashboard\" />
+  </ItemGroup>
 </Project>

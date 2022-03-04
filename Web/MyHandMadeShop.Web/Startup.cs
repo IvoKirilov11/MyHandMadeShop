@@ -1,7 +1,13 @@
 ﻿namespace MyHandMadeShop.Web
 {
-    using System.Reflection;
-
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using MyHandMadeShop.Data;
     using MyHandMadeShop.Data.Common;
     using MyHandMadeShop.Data.Common.Repositories;
@@ -12,15 +18,7 @@
     using MyHandMadeShop.Services.Mapping;
     using MyHandMadeShop.Services.Messaging;
     using MyHandMadeShop.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
+    using System.Reflection;
 
     public class Startup
     {
@@ -64,7 +62,8 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IItemsTypeService, IItemsTypeService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

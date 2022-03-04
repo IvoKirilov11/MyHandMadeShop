@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyHandMadeShop.Data;
 
 namespace MyHandMadeShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220303161443_RemoveColumnDb")]
+    partial class RemoveColumnDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -362,6 +364,12 @@ namespace MyHandMadeShop.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -497,7 +505,7 @@ namespace MyHandMadeShop.Data.Migrations
             modelBuilder.Entity("MyHandMadeShop.Data.Models.Item", b =>
                 {
                     b.HasOne("MyHandMadeShop.Data.Models.ItemType", "ItemType")
-                        .WithMany("Items")
+                        .WithMany()
                         .HasForeignKey("ItemTypeId");
 
                     b.Navigation("ItemType");
@@ -546,11 +554,6 @@ namespace MyHandMadeShop.Data.Migrations
             modelBuilder.Entity("MyHandMadeShop.Data.Models.Item", b =>
                 {
                     b.Navigation("OrderItems");
-                });
-
-            modelBuilder.Entity("MyHandMadeShop.Data.Models.ItemType", b =>
-                {
-                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("MyHandMadeShop.Data.Models.Order", b =>
