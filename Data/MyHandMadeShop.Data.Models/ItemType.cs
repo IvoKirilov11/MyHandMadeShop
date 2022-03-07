@@ -1,18 +1,18 @@
-﻿using System;
+﻿using MyHandMadeShop.Data.Common.Models;
+using System;
 using System.Collections.Generic;
 
 namespace MyHandMadeShop.Data.Models
 {
-    public class ItemType 
+    public class ItemType : BaseDeletableModel<string>
     {
 
         public ItemType()
         {
-            Id = Guid.NewGuid().ToString();
-            Items = new HashSet<Item>();
+            this.Items = new HashSet<Item>();
         }
-        
-        public string Id { get; set; }
+
+
 
         public string Name { get; set; }
 

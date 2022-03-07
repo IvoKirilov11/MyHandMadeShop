@@ -28,14 +28,14 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
                 return this.NotFound();
             }
 
-            var category = await this.dataRepository.All()
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            var itemType = await this.dataRepository.All()
+                .FirstOrDefaultAsync(p => p.Id == id);
+            if (itemType == null)
             {
                 return this.NotFound();
             }
 
-            return this.View(category);
+            return this.View(itemType);
         }
 
         [HttpPost]
@@ -86,7 +86,7 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!this.CategoryExists(itemType.Id))
+                    if (!this.ItemTypeExists(itemType.Id))
                     {
                         return this.NotFound();
                     }
@@ -130,7 +130,7 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
             return this.RedirectToAction(nameof(this.Index));
         }
 
-        private bool CategoryExists(string id)
+        private bool ItemTypeExists(string id)
         {
             return this.dataRepository.All().Any(e => e.Id == id);
         }
