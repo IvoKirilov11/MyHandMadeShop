@@ -12,8 +12,6 @@ namespace MyHandMadeShop.Data.Models
             this.Items = new HashSet<Item>();
         }
 
-
-
         public string Name { get; set; }
 
         public ICollection<Item> Items { get; set; }

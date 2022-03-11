@@ -15,5 +15,6 @@ namespace MyHandMadeShop.Data.Models
         public string Name { get; set; }
 
         public virtual ICollection<City> Cities { get; set; }
-    }   
+
+    }
 }

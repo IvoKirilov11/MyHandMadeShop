@@ -12,7 +12,6 @@ namespace MyHandMadeShop.Data.Models
 
         public virtual Order Order { get; set; }
 
-
         public int ItemId { get; set; }
 
         public virtual Item Item { get; set; }

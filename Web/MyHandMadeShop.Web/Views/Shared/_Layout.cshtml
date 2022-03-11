@@ -22,10 +22,26 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>                       
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Items" asp-action="All">All Items</a>
+                        </li>
+                         <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="SearchItems" asp-action="Index">Search</a>
+                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="ItemsType" asp-action="Index">ItemsType Admin</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Item" asp-action="Create">Create Recipe</a>
+                                </li>
+                            }
                     </ul>
                 </div>
             </div>
