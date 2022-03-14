@@ -20,6 +20,7 @@ namespace MyHandMadeShop.Services.Data
         {
             this.itemsRepository = itemsRepository;
         }
+
         public async Task CreateAsync(CreateItemsInputModel input, string userId, string imagePath)
         {
             var items = new Item
@@ -69,13 +70,12 @@ namespace MyHandMadeShop.Services.Data
 
         public T GetById<T>(int id)
         {
-            var recipe = this.itemsRepository.AllAsNoTracking()
+            var item = this.itemsRepository.AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .To<T>().FirstOrDefault();
 
-            return recipe;
+            return item;
         }
-
 
         public int GetCount()
         {
@@ -92,4 +92,3 @@ namespace MyHandMadeShop.Services.Data
 
     }
 }
-

@@ -72,6 +72,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<IItemsTypeService, ItemsTypeService>();
             services.AddTransient<IItemsServices, ItemsService>();
+            services.AddTransient<ICountriesService, CountriesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
