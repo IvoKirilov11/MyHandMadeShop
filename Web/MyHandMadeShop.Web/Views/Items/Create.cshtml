@@ -1,7 +1,7 @@
 ﻿@using MyHandMadeShop.Web.ViewModels.Items
 @model CreateItemsInputModel
 @{
-    this.ViewData["Title"] = "Add new recipe";
+    this.ViewData["Title"] = "Add new items";
     var categoryItems = this.Model.ItemType.Select(x => new SelectListItem(x.Value, x.Key));
 }
 

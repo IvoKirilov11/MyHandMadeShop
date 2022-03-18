@@ -29,7 +29,6 @@ namespace MyHandMadeShop.Services.Data
                 Description = input.Description,
                 Name = input.Name,
                 Quantity = input.Quantity,
-                Image = input.Image,
                 Price = input.Price,
 
             };
@@ -61,11 +60,11 @@ namespace MyHandMadeShop.Services.Data
 
         public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12)
         {
-            var recipes = this.itemsRepository.AllAsNoTracking()
+            var items = this.itemsRepository.AllAsNoTracking()
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
                 .To<T>().ToList();
-            return recipes;
+            return items;
         }
 
         public T GetById<T>(int id)

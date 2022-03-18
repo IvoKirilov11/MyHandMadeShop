@@ -10,9 +10,9 @@ using MyHandMadeShop.Web.ViewModels.Items;
 using System;
 using System.Threading.Tasks;
 
-namespace MyHandMadeShop.Web.Areas.Administration.Controllers
+namespace MyHandMadeShop.Web.Controllers
 {
-    public class ItemsController : AdministrationController
+    public class ItemsController : BaseController
     {
         private readonly ApplicationDbContext db;
         private readonly IItemsTypeService itemTypeService;

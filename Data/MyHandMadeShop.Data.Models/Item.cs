@@ -1,4 +1,5 @@
-﻿using MyHandMadeShop.Data.Common.Models;
+﻿using MoiteRecepti.Data.Models;
+using MyHandMadeShop.Data.Common.Models;
 using System.Collections.Generic;
 
 namespace MyHandMadeShop.Data.Models
@@ -8,6 +9,7 @@ namespace MyHandMadeShop.Data.Models
         public Item()
         {
             this.OrderItems = new HashSet<OrderItem>();
+            this.Images = new HashSet<Image>();
         }
 
         public string Name { get; set; }
@@ -16,13 +18,13 @@ namespace MyHandMadeShop.Data.Models
 
         public decimal Price { get; set; }
 
-        public string Image { get; set; }
-
         public string ItemTypeId { get; set; }
 
         public ItemType ItemType { get; set; }
 
         public int Quantity { get; set; }
+
+        public virtual ICollection<Image> Images { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }
 
