@@ -134,14 +134,11 @@ namespace MyHandMadeShop.Data.Migrations
                     b.Property<string>("Extension")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ItemId")
+                    b.Property<int>("ItemId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
 
                     b.Property<string>("RemoteImageUrl")
                         .HasColumnType("nvarchar(max)");
@@ -522,7 +519,9 @@ namespace MyHandMadeShop.Data.Migrations
                 {
                     b.HasOne("MyHandMadeShop.Data.Models.Item", "Item")
                         .WithMany("Images")
-                        .HasForeignKey("ItemId");
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Item");
                 });

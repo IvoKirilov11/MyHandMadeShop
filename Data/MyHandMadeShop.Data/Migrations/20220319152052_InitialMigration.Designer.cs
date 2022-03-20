@@ -10,8 +10,8 @@ using MyHandMadeShop.Data;
 namespace MyHandMadeShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220303151341_ChangeDb")]
-    partial class ChangeDb
+    [Migration("20220319152052_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,6 +123,33 @@ namespace MyHandMadeShop.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("MoiteRecepti.Data.Models.Image", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Extension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RemoteImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("MyHandMadeShop.Data.Models.ApplicationRole", b =>
@@ -329,9 +356,6 @@ namespace MyHandMadeShop.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -364,16 +388,24 @@ namespace MyHandMadeShop.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("ItemTypes");
                 });
@@ -434,38 +466,6 @@ namespace MyHandMadeShop.Data.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("MyHandMadeShop.Data.Models.Setting", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Settings");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("MyHandMadeShop.Data.Models.ApplicationRole", null)
@@ -517,6 +517,17 @@ namespace MyHandMadeShop.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MoiteRecepti.Data.Models.Image", b =>
+                {
+                    b.HasOne("MyHandMadeShop.Data.Models.Item", "Item")
+                        .WithMany("Images")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Item");
+                });
+
             modelBuilder.Entity("MyHandMadeShop.Data.Models.City", b =>
                 {
                     b.HasOne("MyHandMadeShop.Data.Models.Country", "Country")
@@ -537,7 +548,7 @@ namespace MyHandMadeShop.Data.Migrations
             modelBuilder.Entity("MyHandMadeShop.Data.Models.Item", b =>
                 {
                     b.HasOne("MyHandMadeShop.Data.Models.ItemType", "ItemType")
-                        .WithMany()
+                        .WithMany("Items")
                         .HasForeignKey("ItemTypeId");
 
                     b.Navigation("ItemType");
@@ -585,7 +596,14 @@ namespace MyHandMadeShop.Data.Migrations
 
             modelBuilder.Entity("MyHandMadeShop.Data.Models.Item", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("MyHandMadeShop.Data.Models.ItemType", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("MyHandMadeShop.Data.Models.Order", b =>

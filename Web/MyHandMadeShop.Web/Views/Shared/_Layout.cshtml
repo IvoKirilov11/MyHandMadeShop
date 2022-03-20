@@ -23,28 +23,26 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li> 
+                        @if (this.User.Identity.IsAuthenticated)
+                            {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Items" asp-action="All">All Items</a>
                         </li>
-                        @if (this.User.Identity.IsAuthenticated)
+                            }
+                            
+                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Items" asp-action="Create">Create Items</a>
+                                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="ItemsType" asp-action="Index">ItemsType</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Items" asp-action="Create">Create Item</a>
                                 </li>
                             }
                             <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="ItemsType" asp-action="Index">ItemsType Admin</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="Item" asp-action="Create">Create Item</a>
-                                </li>
-                            }
                     </ul>
                 </div>
             </div>
@@ -69,6 +67,7 @@
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/lib/datatables/media/js/jquery.dataTables.min.js" asp-append-version="true"></script>
     @await this.RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

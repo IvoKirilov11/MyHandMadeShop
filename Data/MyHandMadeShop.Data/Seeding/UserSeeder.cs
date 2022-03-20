@@ -10,7 +10,7 @@ namespace MyHandMadeShop.Data.Seeding
 {
     public class UserSeeder : ISeeder
     {
-        private const string UsersPassword = "123456";
+        private const string UsersPassword = "12345";
 
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
@@ -23,14 +23,14 @@ namespace MyHandMadeShop.Data.Seeding
             var admin = new ApplicationUser()
             {
                 UserName = "Admin",
-                Email = "mefistofel@myemail.com",
+                Email = "admin@myemail.com",
                 EmailConfirmed = true,
             };
 
             var client = new ApplicationUser()
             {
                 UserName = "Client",
-                Email = "dayna_lennon@bmail.com",
+                Email = "client@bmail.com",
                 EmailConfirmed = true,
             };
 
