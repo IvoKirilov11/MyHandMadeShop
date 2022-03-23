@@ -75,7 +75,8 @@ namespace MyHandMadeShop.Data.Migrations
                 name: "ItemTypes",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -256,7 +257,8 @@ namespace MyHandMadeShop.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ItemTypeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ItemTypeId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ItemTypeId1 = table.Column<int>(type: "int", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -267,8 +269,8 @@ namespace MyHandMadeShop.Data.Migrations
                 {
                     table.PrimaryKey("PK_Items", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Items_ItemTypes_ItemTypeId",
-                        column: x => x.ItemTypeId,
+                        name: "FK_Items_ItemTypes_ItemTypeId1",
+                        column: x => x.ItemTypeId1,
                         principalTable: "ItemTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -403,9 +405,9 @@ namespace MyHandMadeShop.Data.Migrations
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Items_ItemTypeId",
+                name: "IX_Items_ItemTypeId1",
                 table: "Items",
-                column: "ItemTypeId");
+                column: "ItemTypeId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ItemTypes_IsDeleted",

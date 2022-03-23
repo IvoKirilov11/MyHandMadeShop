@@ -6,12 +6,11 @@ using MyHandMadeShop.Common;
 using MyHandMadeShop.Data;
 using MyHandMadeShop.Data.Models;
 using MyHandMadeShop.Services.Data;
-using MyHandMadeShop.Web.Controllers;
 using MyHandMadeShop.Web.ViewModels.Items;
 using System;
 using System.Threading.Tasks;
 
-namespace MyHandMadeShop.Web.Areas.Administration.Controllers
+namespace MyHandMadeShop.Web.Controllers
 {
     public class ItemsController : BaseController
     {
@@ -58,7 +57,7 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
 
             try
             {
-                await this.itemsService.CreateAsync(input, user.Id, $"{this.environment.WebRootPath}/image");
+                await this.itemsService.CreateAsync(input, user.Id, $"{this.environment.WebRootPath}/image/");
             }
             catch (Exception ex)
             {
@@ -92,7 +91,7 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
 
         public IActionResult ById(int id)
         {
-            var item = this.itemsService.GetById<SingleItemViewModel>(id);
+            var item = this.itemsService.GetById<ItemSingleViewModel>(id);
             return this.View(item);
         }
 

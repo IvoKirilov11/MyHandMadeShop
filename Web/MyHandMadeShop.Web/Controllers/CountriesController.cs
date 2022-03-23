@@ -3,9 +3,9 @@ using MyHandMadeShop.Services.Data;
 using MyHandMadeShop.Web.ViewModels.Countries;
 using System.Threading.Tasks;
 
-namespace MyHandMadeShop.Web.Areas.Administration.Controllers
+namespace MyHandMadeShop.Web.Controllers
 {
-    public class CountriesController : AdministrationController
+    public class CountriesController : BaseController
     {
         private readonly ICountriesService countriesService;
 

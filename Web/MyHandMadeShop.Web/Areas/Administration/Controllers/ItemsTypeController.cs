@@ -9,19 +9,19 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
 {
     public class ItemsTypeController : AdministrationController
     {
-        private readonly IRepository<ItemType> dataRepository;
+        private readonly IDeletableEntityRepository<ItemType> dataRepository;
 
-        public ItemsTypeController(IRepository<ItemType> dataRepository)
+        public ItemsTypeController(IDeletableEntityRepository<ItemType> dataRepository)
         {
             this.dataRepository = dataRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            return this.View(await this.dataRepository.All().ToListAsync());
+            return this.View(await this.dataRepository.AllWithDeleted().ToListAsync());
         }
 
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
@@ -38,6 +38,11 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
             return this.View(itemType);
         }
 
+        public IActionResult Create()
+        {
+            return this.View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] ItemType itemType)
@@ -52,7 +57,7 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
             return this.View(itemType);
         }
 
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
             {
@@ -70,7 +75,7 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] ItemType itemType)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] ItemType itemType)
         {
             if (id != itemType.Id)
             {
@@ -102,7 +107,7 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
             return this.View(itemType);
         }
 
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
@@ -122,7 +127,7 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var itemType = this.dataRepository.All().FirstOrDefault(x => x.Id == id);
             this.dataRepository.Delete(itemType);
@@ -130,7 +135,7 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
             return this.RedirectToAction(nameof(this.Index));
         }
 
-        private bool ItemTypeExists(string id)
+        private bool ItemTypeExists(int id)
         {
             return this.dataRepository.All().Any(e => e.Id == id);
         }

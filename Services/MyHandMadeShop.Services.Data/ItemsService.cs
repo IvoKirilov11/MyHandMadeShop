@@ -1,4 +1,5 @@
-﻿using MyHandMadeShop.Data.Common.Repositories;
+﻿using MoiteRecepti.Data.Models;
+using MyHandMadeShop.Data.Common.Repositories;
 using MyHandMadeShop.Data.Models;
 using MyHandMadeShop.Services.Mapping;
 using MyHandMadeShop.Web.ViewModels.Items;
@@ -12,7 +13,7 @@ namespace MyHandMadeShop.Services.Data
 {
     public class ItemsService : IItemsServices
     {
-        private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
+        private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif","jpeg" };
         private readonly IDeletableEntityRepository<Item> itemsRepository;
 
 
@@ -33,7 +34,7 @@ namespace MyHandMadeShop.Services.Data
 
             };
 
-            Directory.CreateDirectory($"{imagePath}");
+            Directory.CreateDirectory($"{imagePath}/items/");
             foreach (var image in input.Images)
             {
                 var extension = Path.GetExtension(image.FileName).TrimStart('.');
@@ -42,7 +43,13 @@ namespace MyHandMadeShop.Services.Data
                     throw new Exception($"Invalid image extension {extension}");
                 }
 
-                var physicalPath = $"{imagePath}.{extension}";
+                var dbImage = new Image
+                {
+                    Extension = extension,
+                };
+                items.Images.Add(dbImage);
+
+                var physicalPath = $"{imagePath}/items/{dbImage.Id}.{extension}";
                 using Stream fileStream = new FileStream(physicalPath, FileMode.Create);
                 await image.CopyToAsync(fileStream);
             }

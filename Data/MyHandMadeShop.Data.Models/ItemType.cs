@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MyHandMadeShop.Data.Models
 {
-    public class ItemType : BaseDeletableModel<string>
+    public class ItemType : BaseDeletableModel<int>
     {
 
         public ItemType()

@@ -358,7 +358,10 @@ namespace MyHandMadeShop.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("ItemTypeId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ItemTypeId1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -376,15 +379,17 @@ namespace MyHandMadeShop.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("ItemTypeId");
+                    b.HasIndex("ItemTypeId1");
 
                     b.ToTable("Items");
                 });
 
             modelBuilder.Entity("MyHandMadeShop.Data.Models.ItemType", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -547,7 +552,7 @@ namespace MyHandMadeShop.Data.Migrations
                 {
                     b.HasOne("MyHandMadeShop.Data.Models.ItemType", "ItemType")
                         .WithMany("Items")
-                        .HasForeignKey("ItemTypeId");
+                        .HasForeignKey("ItemTypeId1");
 
                     b.Navigation("ItemType");
                 });
