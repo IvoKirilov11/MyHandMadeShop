@@ -1,7 +1,5 @@
 ﻿using MyHandMadeShop.Web.ViewModels.Countries;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyHandMadeShop.Services.Data

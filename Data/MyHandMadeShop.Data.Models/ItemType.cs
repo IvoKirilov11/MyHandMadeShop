@@ -1,5 +1,4 @@
 ﻿using MyHandMadeShop.Data.Common.Models;
-using System;
 using System.Collections.Generic;
 
 namespace MyHandMadeShop.Data.Models

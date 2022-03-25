@@ -23,11 +23,6 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return this.NotFound();
-            }
-
             var itemType = await this.dataRepository.All()
                 .FirstOrDefaultAsync(p => p.Id == id);
             if (itemType == null)
@@ -59,11 +54,6 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return this.NotFound();
-            }
-
             var itemType = this.dataRepository.All().FirstOrDefault(x => x.Id == id);
             if (itemType == null)
             {
@@ -109,11 +99,6 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return this.NotFound();
-            }
-
             var itemType = await this.dataRepository.All()
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (itemType == null)

@@ -10,7 +10,7 @@ namespace MyHandMadeShop.Data.Seeding
 {
     public class UserSeeder : ISeeder
     {
-        private const string UsersPassword = "12345";
+        private const string UsersPassword = "123456";
 
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {

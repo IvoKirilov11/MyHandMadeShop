@@ -25,8 +25,7 @@ namespace MyHandMadeShop.Web.Controllers
             IItemsTypeService itemTypeService,
             IItemsServices itemsService,
             UserManager<ApplicationUser> userManager,
-            IWebHostEnvironment environment
-            )
+            IWebHostEnvironment environment)
         {
             this.itemTypeService = itemTypeService;
             this.itemsService = itemsService;
