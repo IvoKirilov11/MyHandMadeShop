@@ -1,7 +1,7 @@
 ﻿namespace MyHandMadeShop.Data.Common.Repositories
 {
     using System.Linq;
-
+    using System.Threading.Tasks;
     using MyHandMadeShop.Data.Common.Models;
 
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>

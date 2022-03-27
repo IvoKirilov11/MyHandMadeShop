@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using MyHandMadeShop.Data.Common.Repositories;
 using MyHandMadeShop.Data.Models;
+using MyHandMadeShop.Services.Data;
+using MyHandMadeShop.Web.ViewModels.Items;
+using MyHandMadeShop.Web.ViewModels.ItemsType;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,10 +13,12 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
     public class ItemsTypeController : AdministrationController
     {
         private readonly IDeletableEntityRepository<ItemType> dataRepository;
+        private readonly IItemsServices itemsService;
 
-        public ItemsTypeController(IDeletableEntityRepository<ItemType> dataRepository)
+        public ItemsTypeController(IDeletableEntityRepository<ItemType> dataRepository, IItemsServices itemsService)
         {
             this.dataRepository = dataRepository;
+            this.itemsService = itemsService;
         }
 
         public async Task<IActionResult> Index()
@@ -123,6 +128,18 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
         private bool ItemTypeExists(int id)
         {
             return this.dataRepository.All().Any(e => e.Id == id);
+        }
+
+        [HttpGet]
+        public IActionResult List(ItemsTypeListInputModel input)
+        {
+            var viewModel = new ListViewModel
+            {
+                Items = this.itemsService
+                .GetByItemType<ItemsInListViewModel>(input.ItemsTypeId),
+            };
+
+            return this.View(viewModel);
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿@model MyHandMadeShop.Web.ViewModels.ItemsType.ItemTypeIndexViewModel
+@{
+    ViewData["Title"] = "Type";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="List" method="get">
+    <div class="row">
+        @foreach (var itemTypes in Model.ItemsType)
+        {
+            <div class="col-1 text-center">
+                <input id="itemTypes_@itemTypes.Id"
+                       type="checkbox"
+                       name="ItemsType"
+                       value="@itemTypes.Id"
+                       class="form-control" />
+                <label for="itemTypes_@itemTypes.Id">@itemTypes.Name</label>
+            </div>
+        }
+    </div>
+
+   
+</form>

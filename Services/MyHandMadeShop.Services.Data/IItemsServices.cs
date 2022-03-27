@@ -18,6 +18,8 @@ namespace MyHandMadeShop.Services.Data
 
         T GetById<T>(int id);
 
+        IEnumerable<T> GetByItemType<T>(IEnumerable<string> itemTypeId);
+
         Task DeleteAsync(int id);
     }
 }

@@ -12,7 +12,6 @@ namespace MyHandMadeShop.Web.Controllers
         public CountriesController(ICountriesService countriesService)
         {
             this.countriesService = countriesService;
-            this.countriesService = countriesService;
         }
 
         public IActionResult Index()
