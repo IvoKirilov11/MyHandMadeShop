@@ -1,18 +1,23 @@
 ﻿using MyHandMadeShop.Data.Models;
 using MyHandMadeShop.Services.Mapping;
-using MyHandMadeShop.Web.ViewModels.Items;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MyHandMadeShop.Web.ViewModels.Orders
 {
-    public class OrderServiceModel : IMapFrom<Order>, IMapTo<Order>
+    public class OrderServiceModel : IMapFrom<Order>
     {
 
-        public string CustomerId { get; set; }
+            public int OrderId { get; set; }
 
-        public string CustomerName { get; set; } 
+            public List<OrderItemModel> OrderItemModels { get; set; }
 
-        public IEnumerable<ItemsInListViewModel> Items { get; set; }
+            public string CustomerId { get; set; }
+
+            public decimal TotalPrice()
+            {
+                return OrderItemModels.Sum(x => x.Price * x.Quantity);
+            }
 
     }
 }

@@ -8,9 +8,5 @@ namespace MyHandMadeShop.Web.ViewModels.Orders
     {
         public int Id { get; set; }
 
-        public void CreateMappings(IProfileExpression configuration)
-        {
-            configuration.CreateMap<Order,CancelOrderViewModel>();
-        }
     }
 }

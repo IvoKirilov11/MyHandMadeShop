@@ -1,21 +1,44 @@
 ﻿@using MyHandMadeShop.Web.ViewModels.Orders
-@model OrderServiceModel
+@model List<OrderServiceModel>
 @{
     this.ViewData["Title"] = "Buy";
 }
+<h1>Списък с поръчки</h1>
+<hr />
  
-<h1>@this.ViewData["Title"]</h1>
-<hr />
-<div class="row">
-    @foreach (var item in Model.Items)
+@if (Model.Count > 0)
+{
+    @foreach (var order in Model)
     {
-        <div class="media col-md-4">
-            <img src="@item.ImageUrl" width="100" class="mr-3 img-responsive">
-            <div class="media-body">
-                <h5 class="mt-0"><a asp-action="ById" asp-route-id="@item.Id">@item.Name</a></h5>
-                @item.ItemTypeName    
-            </div>
-        </div>
+        <table class="table table-bordered table-sm mb-4">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <td colspan="2">Order Id: @order.OrderId</td>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var orderItem in order.OrderItemModels)
+                {
+                    <tr>
+                        <td style="width:60px">
+                            <img src="~/img/@orderItem.ImageUrl" width="50" />
+                        </td>
+                        <td>@orderItem.Name</td>
+                        <td>@orderItem.Price &#8378;</td>
+                        <td>@orderItem.Quantity</td>
+                        <td rowspan="6">Обща цена: @order.TotalPrice() &#8378;</td>
+                    </tr>
+                }
+            </tbody>
+            
+        </table>
     }
-</div>
-<hr />
+}
+else
+{
+    <div class="alert alert-warning">
+        Досега не е правена поръчка.
+    </div>
+}
