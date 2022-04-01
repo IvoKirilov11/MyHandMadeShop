@@ -4,10 +4,8 @@
     this.ViewData["Title"] = "Buy";
 }
 <h1>Списък с поръчки</h1>
-<hr />
- 
-@if (Model.Count > 0)
-{
+
+
     @foreach (var order in Model)
     {
         <table class="table table-bordered table-sm mb-4">
@@ -23,7 +21,7 @@
                 {
                     <tr>
                         <td style="width:60px">
-                            <img src="~/img/@orderItem.ImageUrl" width="50" />
+                            <img src="~/image/items/@orderItem.ImageUrl" width="50" />
                         </td>
                         <td>@orderItem.Name</td>
                         <td>@orderItem.Price &#8378;</td>
@@ -35,10 +33,4 @@
             
         </table>
     }
-}
-else
-{
-    <div class="alert alert-warning">
-        Досега не е правена поръчка.
-    </div>
-}
+

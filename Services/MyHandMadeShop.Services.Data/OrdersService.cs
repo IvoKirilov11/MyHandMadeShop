@@ -3,6 +3,7 @@ using MyHandMadeShop.Data.Common.Repositories;
 using MyHandMadeShop.Data.Models;
 using MyHandMadeShop.Services.Mapping;
 using MyHandMadeShop.Web.ViewModels.Orders;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -54,13 +55,17 @@ namespace MyHandMadeShop.Services.Data
             => this.ordersRepository.All()
             .Any(o => o.Id == id);
 
-        public IQueryable<T> GetOrdersByUserId<T>(string userId)
-            => this.ordersRepository
-            .All()
-            .Where(o => o.CustomerId == userId)
-            .OrderByDescending(o => o.CreatedOn)
-            .To<T>();
+        public IEnumerable<T> GetOrdersByUserId<T>(string userId)
+        {
+           var order = this.ordersRepository
+              .All()
+              .Where(o => o.CustomerId == userId)
+              .OrderByDescending(o => o.CreatedOn)
+              .To<T>().ToList();
 
+            return order;
+
+        }
 
         public T GetById<T>(int id)
             => this.ordersRepository.All()

@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MyHandMadeShop.Data.Models;
+using MyHandMadeShop.Services.Mapping;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyHandMadeShop.Web.ViewModels.Orders
 {
-    public class OrderItemModel
+    public class OrderItemModel : IMapFrom<Order>
     {
-        public int OrderItemId { get; set; }
+        public int OrderId { get; set; }
 
         public decimal Price { get; set; }
 
+        [Required]
+        [MinLength(4)]
         public string Name { get; set; }
 
         public string ImageUrl { get; set; }

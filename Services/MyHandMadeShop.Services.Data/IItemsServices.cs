@@ -10,7 +10,7 @@ namespace MyHandMadeShop.Services.Data
     {
         Task CreateAsync(CreateItemsInputModel input, string userId, string imagePath);
 
-        IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
+        IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6);
 
         IEnumerable<T> GetRandom<T>(int count);
 

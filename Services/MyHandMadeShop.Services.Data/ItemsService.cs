@@ -65,7 +65,7 @@ namespace MyHandMadeShop.Services.Data
             await this.itemsRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12)
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6)
         {
             var items = this.itemsRepository.AllAsNoTracking()
                 .OrderByDescending(x => x.Id)

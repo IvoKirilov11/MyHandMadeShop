@@ -1,4 +1,6 @@
-﻿using MyHandMadeShop.Web.ViewModels.Orders;
+﻿using MyHandMadeShop.Data.Models;
+using MyHandMadeShop.Web.ViewModels.Orders;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,8 +20,7 @@ namespace MyHandMadeShop.Services.Data
 
         Task<T> GetByIdAsync<T>(int id);
 
-        IQueryable<T> GetOrdersByUserId<T>(string userId);
+        IEnumerable<T>GetOrdersByUserId<T>(string userId);
 
-       
     }
 }

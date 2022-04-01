@@ -7,8 +7,7 @@ namespace MyHandMadeShop.Web.ViewModels.Items
 {
     public abstract class BaseItemInputModel
     {
-        [Required]
-        [MinLength(4)]
+        
         public string Name { get; set; }
 
         [Required]

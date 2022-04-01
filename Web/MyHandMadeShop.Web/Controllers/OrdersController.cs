@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using MyHandMadeShop.Data.Models;
 using MyHandMadeShop.Services.Data;
 using MyHandMadeShop.Web.ViewModels.Orders;
 using System.Threading.Tasks;
@@ -8,15 +10,20 @@ namespace MyHandMadeShop.Web.Controllers
     public class OrdersController : BaseController
     {
         private readonly IOrdersService ordersService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public OrdersController(IOrdersService ordersService)
+        public OrdersController(IOrdersService ordersService, UserManager<ApplicationUser> userManager)
         {
             this.ordersService = ordersService;
+            this.userManager = userManager;
         }
 
         public IActionResult Buy()
         {
-            return this.View();
+            string userId = this.userManager.GetUserId(this.User);
+            var orders = this.ordersService.GetOrdersByUserId<OrderServiceModel>(userId);
+            return this.View(orders);
+
         }
 
         public async Task<IActionResult> Cancel(int id)
