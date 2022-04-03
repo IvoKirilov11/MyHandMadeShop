@@ -10,7 +10,7 @@ namespace MyHandMadeShop.Web.ViewModels.Orders
     {
             public int OrderId { get; set; }
 
-            public List<OrderItemModel> OrderItemModels { get; set; }
+            public ICollection<OrderItemModel> OrderItemModels { get; set; }
 
             [Required]
             public string CustomerId { get; set; }

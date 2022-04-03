@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyHandMadeShop.Data.Models;
 using MyHandMadeShop.Services.Data;
 using MyHandMadeShop.Web.ViewModels.Orders;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyHandMadeShop.Web.Controllers
@@ -24,6 +25,13 @@ namespace MyHandMadeShop.Web.Controllers
             var orders = this.ordersService.GetOrdersByUserId<OrderServiceModel>(userId);
             return this.View(orders);
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Buy(OrderServiceModel input)
+        {
+            var orderItem = await this.ordersService.CreateAsync(input);
+            return this.View(orderItem);
         }
 
         public async Task<IActionResult> Cancel(int id)

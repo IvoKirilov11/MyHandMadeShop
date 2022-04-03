@@ -4,33 +4,54 @@
     this.ViewData["Title"] = "Buy";
 }
 <h1>Списък с поръчки</h1>
-
-
-    @foreach (var order in Model)
-    {
-        <table class="table table-bordered table-sm mb-4">
-            <thead class="bg-primary text-white">
-                <tr>
-                    <td colspan="2">Order Id: @order.OrderId</td>
-                    <th>Цена</th>
-                    <th>Количество</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var orderItem in order.OrderItemModels)
-                {
+<hr />
+    <div class="row">
+        @foreach (var order in Model)
+        {
+            <table class="table table-bordered table-sm mb-4">
+                <thead class="bg-primary text-white">
                     <tr>
-                        <td style="width:60px">
-                            <img src="~/image/items/@orderItem.ImageUrl" width="50" />
-                        </td>
-                        <td>@orderItem.Name</td>
-                        <td>@orderItem.Price &#8378;</td>
-                        <td>@orderItem.Quantity</td>
-                        <td rowspan="6">Обща цена: @order.TotalPrice() &#8378;</td>
+                        <td colspan="2">Order Id: @order.OrderId</td>
+                        <th>Цена</th>
+                        <th>Количество</th>
                     </tr>
-                }
-            </tbody>
-            
-        </table>
-    }
+                </thead>
+                <tbody>
+                    @foreach (var orderItem in order.OrderItemModels)
+                    {
+                        <tr>
+                            <td style="width:60px">
+                                <img src="~/image/items/@orderItem.ImageUrl" width="50" />
+                            </td>
+                            <td>@orderItem.Name</td>
+                            <td>@orderItem.Price &#8378;</td>
+                            <td>@orderItem.Quantity</td>
+                            <td rowspan="6">Обща цена: @order.TotalPrice() &#8378;</td>
+                        </tr>
+                    }
+                </tbody>
+                <form method="post" asp-action="Cancel" id="deleteForm" asp-route-id="@order.OrderId">
+                </form>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Cancel</button>
+            </table>
+        }
+    </div>
+    <hr />
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Do you want to cancel order?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
 

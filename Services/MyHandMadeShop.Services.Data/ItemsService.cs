@@ -88,14 +88,6 @@ namespace MyHandMadeShop.Services.Data
             return this.itemsRepository.All().Count();
         }
 
-        public IEnumerable<T> GetRandom<T>(int count)
-        {
-            return this.itemsRepository.All()
-                .OrderBy(x => Guid.NewGuid())
-                .Take(count)
-                .To<T>().ToList();
-        }
-
         public IEnumerable<T> GetByItemType<T>(IEnumerable<string> itemTypeId)
         {
             var query = this.itemsRepository.All().AsQueryable();

@@ -12,8 +12,6 @@ namespace MyHandMadeShop.Services.Data
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6);
 
-        IEnumerable<T> GetRandom<T>(int count);
-
         int GetCount();
 
         T GetById<T>(int id);

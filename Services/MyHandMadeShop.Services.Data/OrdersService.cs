@@ -43,6 +43,7 @@ namespace MyHandMadeShop.Services.Data
             var order = new Order()
             {
                 CustomerId = input.CustomerId,
+                OrderItems = (ICollection<OrderItem>)input.OrderItemModels,
             };
 
             await this.ordersRepository.AddAsync(order);
@@ -64,7 +65,6 @@ namespace MyHandMadeShop.Services.Data
               .To<T>().ToList();
 
             return order;
-
         }
 
         public T GetById<T>(int id)

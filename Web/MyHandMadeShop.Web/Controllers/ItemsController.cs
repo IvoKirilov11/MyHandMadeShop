@@ -77,7 +77,7 @@ namespace MyHandMadeShop.Web.Controllers
                 return this.NotFound();
             }
 
-            const int ItemsPerPage = 12;
+            const int ItemsPerPage = 6;
             var viewModel = new ItemsViewModel
             {
                 ItemsPerPage = ItemsPerPage,
