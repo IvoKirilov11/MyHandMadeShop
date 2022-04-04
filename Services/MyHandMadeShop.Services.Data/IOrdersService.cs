@@ -12,8 +12,6 @@ namespace MyHandMadeShop.Services.Data
 
         Task<string> CreateAsync(OrderServiceModel input);
 
-        Task CompleteAsync(int id);
-
         bool CheckIfOrderExists(int id);
 
         T GetById<T>(int id);

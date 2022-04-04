@@ -28,15 +28,6 @@ namespace MyHandMadeShop.Services.Data
 
         }
 
-        public async Task CompleteAsync(int id)
-        {
-            var order = await this.ordersRepository.All()
-                .FirstOrDefaultAsync(o => o.Id == id);
-
-            this.ordersRepository.Update(order);
-            await this.ordersRepository.SaveChangesAsync();
-        }
-
         public async Task<string> CreateAsync(OrderServiceModel input)
         {
 

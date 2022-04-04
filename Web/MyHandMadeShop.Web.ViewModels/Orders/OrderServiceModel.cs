@@ -8,6 +8,7 @@ namespace MyHandMadeShop.Web.ViewModels.Orders
 {
     public class OrderServiceModel : IMapFrom<Order>
     {
+
             public int OrderId { get; set; }
 
             public ICollection<OrderItemModel> OrderItemModels { get; set; }

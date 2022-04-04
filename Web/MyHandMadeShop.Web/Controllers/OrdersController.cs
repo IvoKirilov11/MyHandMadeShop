@@ -27,13 +27,6 @@ namespace MyHandMadeShop.Web.Controllers
 
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Buy(OrderServiceModel input)
-        {
-            var orderItem = await this.ordersService.CreateAsync(input);
-            return this.View(orderItem);
-        }
-
         public async Task<IActionResult> Cancel(int id)
         {
             var order = await this.ordersService.GetByIdAsync<CancelOrderViewModel>(id);
