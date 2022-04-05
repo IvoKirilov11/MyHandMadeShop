@@ -36,7 +36,6 @@ namespace MyHandMadeShop.Services.Data
             await this.citiesRepository.SaveChangesAsync();
         }
 
-
         public async Task DeleteByCountryIdAsync(int countryId)
         {
             var cities = this.citiesRepository.All()

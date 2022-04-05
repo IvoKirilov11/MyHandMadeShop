@@ -129,17 +129,5 @@ namespace MyHandMadeShop.Web.Areas.Administration.Controllers
         {
             return this.dataRepository.All().Any(e => e.Id == id);
         }
-
-        [HttpGet]
-        public IActionResult List(ItemsTypeListInputModel input)
-        {
-            var viewModel = new ListViewModel
-            {
-                Items = this.itemsService
-                .GetByItemType<ItemsInListViewModel>(input.ItemsTypeId),
-            };
-
-            return this.View(viewModel);
-        }
     }
 }

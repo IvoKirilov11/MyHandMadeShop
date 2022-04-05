@@ -90,10 +90,16 @@ namespace MyHandMadeShop.Services.Data
 
         public IEnumerable<T> GetByItemType<T>(IEnumerable<string> itemTypeId)
         {
+            
             var query = this.itemsRepository.All().AsQueryable();
-            foreach (var itemsTypeId in itemTypeId)
+
+            if (itemTypeId != null)
             {
-                query = query.Where(x => x.ItemType.Items.Any(i => i.ItemTypeId == itemsTypeId));
+
+                foreach (var itemsTypeId in itemTypeId)
+                {
+                    query = query.Where(x => x.ItemType.Items.Any(i => i.ItemTypeId == itemsTypeId));
+                }
             }
 
             return query.To<T>().ToList();

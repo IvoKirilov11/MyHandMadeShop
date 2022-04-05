@@ -19,8 +19,9 @@ namespace MyHandMadeShop.Web.Controllers
             this.userManager = userManager;
         }
 
-        public IActionResult Buy()
+        public IActionResult Buy(OrderServiceModel input)
         {
+
             string userId = this.userManager.GetUserId(this.User);
             var orders = this.ordersService.GetOrdersByUserId<OrderServiceModel>(userId);
             return this.View(orders);

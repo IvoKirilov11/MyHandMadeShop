@@ -1,8 +1,6 @@
 ﻿using MyHandMadeShop.Web.ViewModels.Items;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace MyHandMadeShop.Web.ViewModels.ItemsType
 {
