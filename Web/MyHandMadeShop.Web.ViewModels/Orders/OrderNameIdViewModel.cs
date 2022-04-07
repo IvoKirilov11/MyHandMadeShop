@@ -2,16 +2,14 @@
 using MyHandMadeShop.Services.Mapping;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace MyHandMadeShop.Web.ViewModels.Cities
+namespace MyHandMadeShop.Web.ViewModels.Orders
 {
-    public class CityServiceModel : IMapFrom<City>
+    public class OrderNameIdViewModel : IMapFrom<Order>
     {
         public int Id { get; set; }
 
-        [Required]
         public string Name { get; set; }
     }
 }

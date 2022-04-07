@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MyHandMadeShop.Data.Models;
 using MyHandMadeShop.Services.Data;
+using MyHandMadeShop.Web.ViewModels.Items;
+using MyHandMadeShop.Web.ViewModels.ItemsType;
 using MyHandMadeShop.Web.ViewModels.Orders;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,44 +14,27 @@ namespace MyHandMadeShop.Web.Controllers
     {
         private readonly IOrdersService ordersService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IItemsServices itemsServices;
 
-        public OrdersController(IOrdersService ordersService, UserManager<ApplicationUser> userManager)
+        public OrdersController(IOrdersService ordersService, UserManager<ApplicationUser> userManager,IItemsServices itemsServices)
         {
             this.ordersService = ordersService;
             this.userManager = userManager;
+            this.itemsServices = itemsServices;
         }
 
-        public IActionResult Buy(OrderServiceModel input)
+        public IActionResult Buy(BuyListInputModel input)
         {
 
-            string userId = this.userManager.GetUserId(this.User);
-            var orders = this.ordersService.GetOrdersByUserId<OrderServiceModel>(userId);
-            return this.View(orders);
-
-        }
-
-        public async Task<IActionResult> Cancel(int id)
-        {
-            var order = await this.ordersService.GetByIdAsync<CancelOrderViewModel>(id);
-            if (order == null)
+            var viewModel = new BuyViewModel
             {
-                return this.NotFound();
-            }
+                Orders = this.ordersService.GetAll<OrderNameIdViewModel>(),
+                Items = this.itemsServices
+                .GetByItemType<ItemsInListViewModel>(input.Orders),
+            };
+            return this.View(viewModel);
 
-            return this.View(order);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Cancel(CancelOrderViewModel input)
-        {
-            if (!this.ordersService.CheckIfOrderExists(input.Id))
-            {
-                return this.NotFound();
-            }
-
-            await this.ordersService.CancelAsync(input.Id);
-
-            return this.Redirect("/Items/All");
-        }
     }
 }

@@ -8,17 +8,7 @@ namespace MyHandMadeShop.Services.Data
 {
     public interface IOrdersService
     {
-        Task CancelAsync(int id);
-
-        Task<string> CreateAsync(OrderServiceModel input);
-
-        bool CheckIfOrderExists(int id);
-
-        T GetById<T>(int id);
-
-        Task<T> GetByIdAsync<T>(int id);
-
-        IEnumerable<T>GetOrdersByUserId<T>(string userId);
+        IEnumerable<T> GetAll<T>();
 
     }
 }

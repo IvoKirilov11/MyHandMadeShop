@@ -90,7 +90,7 @@ namespace MyHandMadeShop.Services.Data
 
         public IEnumerable<T> GetByItemType<T>(IEnumerable<string> itemTypeId)
         {
-            
+
             var query = this.itemsRepository.All().AsQueryable();
 
             if (itemTypeId != null)
@@ -98,7 +98,7 @@ namespace MyHandMadeShop.Services.Data
 
                 foreach (var itemsTypeId in itemTypeId)
                 {
-                    query = query.Where(x => x.ItemType.Items.Any(i => i.ItemTypeId == itemsTypeId));
+                    query = query.Where(x => x.ItemType.Items.Any(i => i.ItemTypeId == itemsTypeId)).OrderBy(x => x.Id);
                 }
             }
 

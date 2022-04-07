@@ -1,57 +1,45 @@
 ﻿@using MyHandMadeShop.Web.ViewModels.Orders
-@model List<OrderServiceModel>
+@model BuyViewModel
 @{
-    this.ViewData["Title"] = "Buy";
+    this.ViewData["Title"] = "Списък с поръчки";
 }
-<h1>Списък с поръчки</h1>
-<hr />
+
+    <h1>@ViewData["Title"]</h1>
+
+
     <div class="row">
-        @foreach (var order in Model)
+        @foreach (var order in Model.Orders)
         {
-            <table class="table table-bordered table-sm mb-4">
-                <thead class="bg-primary text-white">
-                    <tr>
-                        <td colspan="2">Order Id: @order.OrderId</td>
-                        <th>Цена</th>
-                        <th>Количество</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var orderItem in order.OrderItemModels)
-                    {
-                        <tr>
-                            <td style="width:60px">
-                                <img src="~/image/items/@orderItem.ImageUrl" width="50" />
-                            </td>
-                            <td>@orderItem.Name</td>
-                            <td>@orderItem.Price &#8378;</td>
-                            <td>@orderItem.Quantity</td>
-                            <td rowspan="6">Обща цена: @order.TotalPrice() &#8378;</td>
-                        </tr>
-                    }
-                </tbody>
-                <form method="post" asp-action="Cancel" id="deleteForm" asp-route-id="@order.OrderId">
-                </form>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Cancel</button>
-            </table>
+            <div class="col-1 text-center">
+                <input id="order_@order.Id"
+                       type="checkbox"
+                       name="Orders"
+                       value="@order.Id"
+                       class="form-control" />
+                <label for="order_@order.Id">@order.Name</label>
+            </div>
         }
     </div>
-    <hr />
-
-
-
-
-<div class="modal" tabindex="-1" role="dialog" id="deleteModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <p>Do you want to cancel order?</p>
+    <div class="row">
+        @foreach (var item in this.Model.Items)
+        {
+            <div class="card col-md-3">
+                <img class="card-img-top" src="@item.ImageUrl" alt="@item.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.ItemTypeName</p>
+                    
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Yes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            </div>
-        </div>
+        }
     </div>
-</div>
+     
+
+                    
+               
+    
+   
+
+
+
 

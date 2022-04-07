@@ -18,7 +18,6 @@
             this.itemsService = itemsService;
         }
 
-
         public IActionResult Index()
         {
             return this.View();
@@ -41,6 +40,7 @@
         {
             var viewModel = new ListViewModel
             {
+
                 Items = this.itemsService
                 .GetByItemType<ItemsInListViewModel>(input.ItemsTypeId),
             };

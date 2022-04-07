@@ -17,58 +17,13 @@ namespace MyHandMadeShop.Services.Data
         {
             this.ordersRepository = ordersRepository;
         }
-
-        public async Task CancelAsync(int id)
+        public IEnumerable<T> GetAll<T>()
         {
-            var order = await this.ordersRepository.All()
-                .FirstAsync(o => o.Id == id);
-
-            this.ordersRepository.Update(order);
-            await this.ordersRepository.SaveChangesAsync();
-
+            return this.ordersRepository.All()
+                .Where(x => x.OrderItems.Count() >= 20)
+                .OrderByDescending(x => x.OrderItems.Count())
+                .To<T>().ToList();
         }
-
-        public async Task<string> CreateAsync(OrderServiceModel input)
-        {
-
-            var order = new Order()
-            {
-                CustomerId = input.CustomerId,
-                OrderItems = (ICollection<OrderItem>)input.OrderItemModels,
-            };
-
-            await this.ordersRepository.AddAsync(order);
-            await this.ordersRepository.SaveChangesAsync();
-
-            return order.Id.ToString();
-        }
-
-        public bool CheckIfOrderExists(int id)
-            => this.ordersRepository.All()
-            .Any(o => o.Id == id);
-
-        public IEnumerable<T> GetOrdersByUserId<T>(string userId)
-        {
-           var order = this.ordersRepository
-              .All()
-              .Where(o => o.CustomerId == userId)
-              .OrderByDescending(o => o.CreatedOn)
-              .To<T>().ToList();
-
-            return order;
-        }
-
-        public T GetById<T>(int id)
-            => this.ordersRepository.All()
-            .Where(o => o.Id == id)
-            .To<T>()
-            .FirstOrDefault();
-
-        public async Task<T> GetByIdAsync<T>(int id)
-            => await this.ordersRepository.All()
-            .Where(o => o.Id == id)
-            .To<T>()
-            .FirstOrDefaultAsync();
 
     }
 }
