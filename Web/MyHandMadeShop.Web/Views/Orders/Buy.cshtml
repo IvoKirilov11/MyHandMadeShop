@@ -11,8 +11,7 @@
         @foreach (var order in Model.Orders)
         {
             <div class="col-1 text-center">
-                <input id="order_@order.Id"
-                       type="checkbox"
+                <input id="order_@order.Id
                        name="Orders"
                        value="@order.Id"
                        class="form-control" />
@@ -28,6 +27,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
                     <p class="card-text">@item.ItemTypeName</p>
+                    <td>@item.Price лв.</td>
                     
                 </div>
             </div>

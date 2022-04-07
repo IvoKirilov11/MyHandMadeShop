@@ -22,6 +22,8 @@ namespace MyHandMadeShop.Web.ViewModels.Items
 
         public decimal Price { get; set; }
 
+        public string Quantity { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Item, ItemsInListViewModel>().ForMember(x => x.ImageUrl, opt =>

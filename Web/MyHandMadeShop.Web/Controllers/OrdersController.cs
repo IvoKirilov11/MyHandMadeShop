@@ -16,10 +16,9 @@ namespace MyHandMadeShop.Web.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IItemsServices itemsServices;
 
-        public OrdersController(IOrdersService ordersService, UserManager<ApplicationUser> userManager,IItemsServices itemsServices)
+        public OrdersController(IOrdersService ordersService, IItemsServices itemsServices)
         {
             this.ordersService = ordersService;
-            this.userManager = userManager;
             this.itemsServices = itemsServices;
         }
 

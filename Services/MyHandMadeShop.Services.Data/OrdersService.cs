@@ -17,11 +17,12 @@ namespace MyHandMadeShop.Services.Data
         {
             this.ordersRepository = ordersRepository;
         }
+
         public IEnumerable<T> GetAll<T>()
         {
             return this.ordersRepository.All()
                 .Where(x => x.OrderItems.Count() >= 20)
-                .OrderByDescending(x => x.OrderItems.Count())
+                .OrderByDescending(x => x.OrderItems.Count)
                 .To<T>().ToList();
         }
 
