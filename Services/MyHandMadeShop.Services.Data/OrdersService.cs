@@ -22,7 +22,7 @@ namespace MyHandMadeShop.Services.Data
         {
             return this.ordersRepository.All()
                 .Where(x => x.OrderItems.Count() >= 20)
-                .OrderByDescending(x => x.OrderItems.Count)
+                .OrderBy(x => x.OrderItems.Count)
                 .To<T>().ToList();
         }
 

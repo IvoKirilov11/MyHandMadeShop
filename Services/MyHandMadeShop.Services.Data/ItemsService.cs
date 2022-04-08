@@ -98,7 +98,7 @@ namespace MyHandMadeShop.Services.Data
 
                 foreach (var itemsTypeId in itemTypeId)
                 {
-                    query = query.Where(x => x.ItemType.Items.Any(i => i.ItemTypeId == itemsTypeId)).OrderBy(x => x.Id);
+                    query = query.Where(x => x.ItemType.Items.Any(i => i.ItemTypeId == itemsTypeId));
                 }
             }
 

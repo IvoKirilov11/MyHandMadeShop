@@ -33,7 +33,7 @@ namespace MyHandMadeShop.Web.Controllers
             }
 
             await this.cityiesService.CreateAsync(cityCreateInputModel);
-            return this.RedirectToAction("All", "Cities", new { area = "Administration" });
+            return this.RedirectToAction("All", "Cities");
         }
 
 
@@ -47,7 +47,7 @@ namespace MyHandMadeShop.Web.Controllers
         public async Task<IActionResult> Remove(CityDetailsViewModel cityDetailsViewModel)
         {
             await this.cityiesService.DeleteByCountryIdAsync(cityDetailsViewModel.Id);
-            return this.RedirectToAction("All", "Cities", new { area = "Administration" });
+            return this.RedirectToAction("All", "Cities");
         }
 
         public async Task<IActionResult> GetAll()

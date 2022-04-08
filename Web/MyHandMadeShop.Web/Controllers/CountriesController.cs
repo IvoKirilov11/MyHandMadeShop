@@ -33,7 +33,7 @@ namespace MyHandMadeShop.Web.Controllers
             }
 
             await this.countriesService.CreateAsync(countryCreateInputModel);
-            return this.RedirectToAction("All", "Countries", new { area = "Administration" });
+            return this.RedirectToAction("All", "Countries");
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -53,7 +53,7 @@ namespace MyHandMadeShop.Web.Controllers
             }
 
             await this.countriesService.EditAsync(countryEditViewModel);
-            return this.RedirectToAction("All", "Countries", new { area = "Administration" });
+            return this.RedirectToAction("All", "Countries");
         }
 
         public async Task<IActionResult> Remove(int id)
@@ -66,7 +66,7 @@ namespace MyHandMadeShop.Web.Controllers
         public async Task<IActionResult> Remove(CountryDetailsViewModel countryDetailsViewModel)
         {
             await this.countriesService.DeleteByIdAsync(countryDetailsViewModel.Id);
-            return this.RedirectToAction("All", "Countries", new { area = "Administration" });
+            return this.RedirectToAction("All", "Countries");
         }
 
         public async Task<IActionResult> GetAll()
