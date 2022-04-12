@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyHandMadeShop.Web.ViewModels
+﻿namespace MyHandMadeShop.Web.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class PagingViewModel
     {
         public int PageNumber { get; set; }

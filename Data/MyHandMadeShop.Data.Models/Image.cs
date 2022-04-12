@@ -1,8 +1,9 @@
 ﻿namespace MoiteRecepti.Data.Models
 {
+    using System;
+
     using MyHandMadeShop.Data.Common.Models;
     using MyHandMadeShop.Data.Models;
-    using System;
 
     public class Image : BaseModel<string>
     {

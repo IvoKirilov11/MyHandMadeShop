@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using MyHandMadeShop.Data.Models;
-using MyHandMadeShop.Services.Data;
-using MyHandMadeShop.Web.ViewModels.Items;
-using MyHandMadeShop.Web.ViewModels.ItemsType;
-using MyHandMadeShop.Web.ViewModels.Orders;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Web.Controllers
+﻿namespace MyHandMadeShop.Web.Controllers
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using MyHandMadeShop.Data.Models;
+    using MyHandMadeShop.Services.Data;
+    using MyHandMadeShop.Web.ViewModels.Items;
+    using MyHandMadeShop.Web.ViewModels.ItemsType;
+    using MyHandMadeShop.Web.ViewModels.Orders;
+
     public class OrdersController : BaseController
     {
         private readonly IOrdersService ordersService;
@@ -22,17 +23,26 @@ namespace MyHandMadeShop.Web.Controllers
             this.itemsServices = itemsServices;
         }
 
-        public IActionResult Buy(BuyListInputModel input)
+        public IActionResult Buy(string input)
         {
+
+            var obj = new List<string>();
+            obj.Add(input);
+            var items = itemsServices
+                .GetByItemType<ItemsInListViewModel>(obj);
+
+            if (items == null)
+            {
+                return RedirectToAction("Index", "HomeController");
+            }
 
             var viewModel = new BuyViewModel
             {
                 Orders = this.ordersService.GetAll<OrderNameIdViewModel>(),
-                Items = this.itemsServices
-                .GetByItemType<ItemsInListViewModel>(input.Orders),
+                Items = items,
             };
-            return this.View(viewModel);
 
+            return this.View(viewModel);
         }
 
     }

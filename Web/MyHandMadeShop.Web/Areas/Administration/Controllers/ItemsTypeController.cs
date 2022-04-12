@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MyHandMadeShop.Data.Common.Repositories;
-using MyHandMadeShop.Data.Models;
-using MyHandMadeShop.Services.Data;
-using MyHandMadeShop.Web.ViewModels.Items;
-using MyHandMadeShop.Web.ViewModels.ItemsType;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Web.Areas.Administration.Controllers
+﻿namespace MyHandMadeShop.Web.Areas.Administration.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using MyHandMadeShop.Data.Common.Repositories;
+    using MyHandMadeShop.Data.Models;
+    using MyHandMadeShop.Services.Data;
+    using MyHandMadeShop.Web.ViewModels.Items;
+    using MyHandMadeShop.Web.ViewModels.ItemsType;
+
     public class ItemsTypeController : AdministrationController
     {
         private readonly IDeletableEntityRepository<ItemType> dataRepository;

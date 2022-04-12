@@ -1,16 +1,17 @@
-﻿using MoiteRecepti.Data.Models;
-using MyHandMadeShop.Data.Common.Repositories;
-using MyHandMadeShop.Data.Models;
-using MyHandMadeShop.Services.Mapping;
-using MyHandMadeShop.Web.ViewModels.Items;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Services.Data
+﻿namespace MyHandMadeShop.Services.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using MoiteRecepti.Data.Models;
+    using MyHandMadeShop.Data.Common.Repositories;
+    using MyHandMadeShop.Data.Models;
+    using MyHandMadeShop.Services.Mapping;
+    using MyHandMadeShop.Web.ViewModels.Items;
+
     public class ItemsService : IItemsServices
     {
         private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif","jpeg" };
@@ -93,16 +94,18 @@ namespace MyHandMadeShop.Services.Data
 
             var query = this.itemsRepository.All().AsQueryable();
 
-            if (itemTypeId != null)
+            if (itemTypeId != null || itemTypeId.Count() > 0)
             {
 
                 foreach (var itemsTypeId in itemTypeId)
                 {
                     query = query.Where(x => x.ItemType.Items.Any(i => i.ItemTypeId == itemsTypeId));
                 }
+
+                return query.To<T>().ToList();
             }
 
-            return query.To<T>().ToList();
+            return null;
         }
 
     }

@@ -1,14 +1,15 @@
 ﻿namespace MyHandMadeShop.Data
 {
-    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore;
-    using MyHandMadeShop.Data.Common.Models;
-    using MyHandMadeShop.Data.Models;
     using System;
     using System.Linq;
     using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+    using MyHandMadeShop.Data.Common.Models;
+    using MyHandMadeShop.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {

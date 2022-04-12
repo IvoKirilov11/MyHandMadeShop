@@ -1,8 +1,9 @@
-﻿using MyHandMadeShop.Data.Common.Models;
-using System.Collections.Generic;
-
-namespace MyHandMadeShop.Data.Models
+﻿namespace MyHandMadeShop.Data.Models
 {
+    using System.Collections.Generic;
+
+    using MyHandMadeShop.Data.Common.Models;
+
     public class ItemType : BaseDeletableModel<int>
     {
 

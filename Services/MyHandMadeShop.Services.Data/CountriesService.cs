@@ -1,16 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MyHandMadeShop.Data.Common.Repositories;
-using MyHandMadeShop.Data.Models;
-using MyHandMadeShop.Services.Data.Common;
-using MyHandMadeShop.Services.Mapping;
-using MyHandMadeShop.Web.ViewModels.Countries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Services.Data
+﻿namespace MyHandMadeShop.Services.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Microsoft.EntityFrameworkCore;
+    using MyHandMadeShop.Data.Common.Repositories;
+    using MyHandMadeShop.Data.Models;
+    using MyHandMadeShop.Services.Data.Common;
+    using MyHandMadeShop.Services.Mapping;
+    using MyHandMadeShop.Web.ViewModels.Countries;
+
     public class CountriesService : ICountriesService
     {
         private readonly IDeletableEntityRepository<Country> countriesRepository;

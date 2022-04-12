@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MyHandMadeShop.Services.Data;
-using MyHandMadeShop.Web.ViewModels.Cities;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Web.Controllers
+﻿namespace MyHandMadeShop.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Mvc;
+    using MyHandMadeShop.Services.Data;
+    using MyHandMadeShop.Web.ViewModels.Cities;
+
     public class CitiesController : BaseController
     {
         private readonly ICitiesService cityiesService;

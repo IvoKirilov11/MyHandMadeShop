@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using MyHandMadeShop.Common;
-using MyHandMadeShop.Data.Models;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Data.Seeding
+﻿namespace MyHandMadeShop.Data.Seeding
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.DependencyInjection;
+    using MyHandMadeShop.Common;
+    using MyHandMadeShop.Data.Models;
+
     public class UserSeeder : ISeeder
     {
         private const string UsersPassword = "123456";

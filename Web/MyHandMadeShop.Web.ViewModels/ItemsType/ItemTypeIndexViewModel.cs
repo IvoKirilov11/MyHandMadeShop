@@ -1,9 +1,10 @@
-﻿using MyHandMadeShop.Web.ViewModels.Items;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace MyHandMadeShop.Web.ViewModels.ItemsType
+﻿namespace MyHandMadeShop.Web.ViewModels.ItemsType
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using MyHandMadeShop.Web.ViewModels.Items;
+
     public class ItemTypeIndexViewModel
     {
         [Required]

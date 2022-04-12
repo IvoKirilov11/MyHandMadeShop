@@ -1,5 +1,7 @@
 ﻿namespace MyHandMadeShop.Web
 {
+    using System.Reflection;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -18,7 +20,6 @@
     using MyHandMadeShop.Services.Mapping;
     using MyHandMadeShop.Services.Messaging;
     using MyHandMadeShop.Web.ViewModels;
-    using System.Reflection;
 
     public class Startup
     {

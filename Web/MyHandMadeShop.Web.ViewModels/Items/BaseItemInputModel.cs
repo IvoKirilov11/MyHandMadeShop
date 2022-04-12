@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace MyHandMadeShop.Web.ViewModels.Items
+﻿namespace MyHandMadeShop.Web.ViewModels.Items
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
     public abstract class BaseItemInputModel
     {
         [Required]

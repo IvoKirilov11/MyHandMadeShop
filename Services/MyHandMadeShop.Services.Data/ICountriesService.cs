@@ -1,9 +1,10 @@
-﻿using MyHandMadeShop.Web.ViewModels.Countries;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Services.Data
+﻿namespace MyHandMadeShop.Services.Data
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using MyHandMadeShop.Web.ViewModels.Countries;
+
     public interface ICountriesService 
     {
         Task<CountryDetailsViewModel> CreateAsync(CountryCreateInputModel countryCreateInputModel);

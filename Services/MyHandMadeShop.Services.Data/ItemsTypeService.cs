@@ -1,12 +1,13 @@
-﻿using MyHandMadeShop.Data.Common.Repositories;
-using MyHandMadeShop.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace MyHandMadeShop.Services.Data
+﻿namespace MyHandMadeShop.Services.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    using MyHandMadeShop.Data.Common.Repositories;
+    using MyHandMadeShop.Data.Models;
+
     public class ItemsTypeService : IItemsTypeService
     {
         private readonly IRepository<ItemType> itemsTypeRepository;

@@ -1,11 +1,12 @@
-﻿using MyHandMadeShop.Web.ViewModels.Items;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace MyHandMadeShop.Web.ViewModels.ItemsType
+﻿namespace MyHandMadeShop.Web.ViewModels.ItemsType
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
+    using MyHandMadeShop.Web.ViewModels.Items;
+
     public class ListViewModel
     {
         [Required]

@@ -1,10 +1,11 @@
-﻿using MyHandMadeShop.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyHandMadeShop.Data.Models
+﻿namespace MyHandMadeShop.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using MyHandMadeShop.Data.Common.Models;
+
     public class Country : BaseDeletableModel<int>
     {
         public Country()

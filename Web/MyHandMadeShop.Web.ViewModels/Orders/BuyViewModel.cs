@@ -1,8 +1,9 @@
-﻿using MyHandMadeShop.Web.ViewModels.Items;
-using System.Collections.Generic;
-
-namespace MyHandMadeShop.Web.ViewModels.Orders
+﻿namespace MyHandMadeShop.Web.ViewModels.Orders
 {
+    using System.Collections.Generic;
+
+    using MyHandMadeShop.Web.ViewModels.Items;
+
     public class BuyViewModel
     {
         public IEnumerable<OrderNameIdViewModel> Orders { get; set; }

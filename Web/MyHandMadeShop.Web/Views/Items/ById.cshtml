@@ -27,7 +27,10 @@
         <font size="+2"><li class="grey">@Model.Price лв.</li></font>
     </div>
     <div class="d-flex justify-content-left mt-3 mb-3">
-    <a class="btn btn-lg btn-outline-primary" asp-area="" asp-controller="Orders" asp-action="Buy">Buy</a>
+        <form method="post" asp-action="Buy" id="deleteForm" asp-route-id="@Model.Id">
+              <a class="btn btn-lg btn-outline-primary" href="/Orders/Buy?input=@Model.Id">Buy</a>         
+        </form>
+   
 </div>
     <div class="item-feature">
           

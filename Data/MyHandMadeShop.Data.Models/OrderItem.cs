@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyHandMadeShop.Data.Models
+﻿namespace MyHandMadeShop.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class OrderItem
     {
         public int Id { get; set; }

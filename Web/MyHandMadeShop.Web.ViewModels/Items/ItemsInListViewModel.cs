@@ -1,11 +1,12 @@
-﻿using AutoMapper;
-using MyHandMadeShop.Data.Models;
-using MyHandMadeShop.Services.Mapping;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-
-namespace MyHandMadeShop.Web.ViewModels.Items
+﻿namespace MyHandMadeShop.Web.ViewModels.Items
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+
+    using AutoMapper;
+    using MyHandMadeShop.Data.Models;
+    using MyHandMadeShop.Services.Mapping;
+
     public class ItemsInListViewModel : IMapFrom<Item>, IHaveCustomMappings
     {
         public int Id { get; set; }

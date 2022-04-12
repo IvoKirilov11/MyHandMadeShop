@@ -1,17 +1,18 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using MyHandMadeShop.Common;
-using MyHandMadeShop.Data;
-using MyHandMadeShop.Data.Models;
-using MyHandMadeShop.Services.Data;
-using MyHandMadeShop.Web.ViewModels.Items;
-using System;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Web.Controllers
+﻿namespace MyHandMadeShop.Web.Controllers
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using MyHandMadeShop.Common;
+    using MyHandMadeShop.Data;
+    using MyHandMadeShop.Data.Models;
+    using MyHandMadeShop.Services.Data;
+    using MyHandMadeShop.Web.ViewModels.Items;
+
     public class ItemsController : BaseController
     {
         private readonly ApplicationDbContext db;

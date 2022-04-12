@@ -1,11 +1,12 @@
-﻿using MyHandMadeShop.Data.Models;
-using MyHandMadeShop.Services.Mapping;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-
-namespace MyHandMadeShop.Web.ViewModels.Orders
+﻿namespace MyHandMadeShop.Web.ViewModels.Orders
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+
+    using MyHandMadeShop.Data.Models;
+    using MyHandMadeShop.Services.Mapping;
+
     public class OrderServiceModel : IMapFrom<Order>
     {
 

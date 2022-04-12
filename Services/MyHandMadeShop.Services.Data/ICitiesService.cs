@@ -1,11 +1,12 @@
-﻿using MyHandMadeShop.Web.ViewModels.Cities;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Services.Data
+﻿namespace MyHandMadeShop.Services.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using MyHandMadeShop.Web.ViewModels.Cities;
+
     public interface ICitiesService
     {
         Task CreateAsync(CityCreateInputModel cityCreateInputMode);

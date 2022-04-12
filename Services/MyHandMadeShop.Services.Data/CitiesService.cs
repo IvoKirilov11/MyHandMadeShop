@@ -1,16 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MyHandMadeShop.Data.Common.Repositories;
-using MyHandMadeShop.Data.Models;
-using MyHandMadeShop.Services.Mapping;
-using MyHandMadeShop.Web.ViewModels.Cities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyHandMadeShop.Services.Data
+﻿namespace MyHandMadeShop.Services.Data
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Microsoft.EntityFrameworkCore;
+    using MyHandMadeShop.Data.Common.Repositories;
+    using MyHandMadeShop.Data.Models;
+    using MyHandMadeShop.Services.Mapping;
+    using MyHandMadeShop.Web.ViewModels.Cities;
+
     public class CitiesService : ICitiesService
     {
         private readonly IDeletableEntityRepository<City> citiesRepository;

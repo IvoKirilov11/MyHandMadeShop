@@ -1,9 +1,10 @@
-﻿using MoiteRecepti.Data.Models;
-using MyHandMadeShop.Data.Common.Models;
-using System.Collections.Generic;
-
-namespace MyHandMadeShop.Data.Models
+﻿namespace MyHandMadeShop.Data.Models
 {
+    using System.Collections.Generic;
+
+    using MoiteRecepti.Data.Models;
+    using MyHandMadeShop.Data.Common.Models;
+
     public class Item : BaseDeletableModel<int>
     {
         public Item()

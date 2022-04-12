@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace MyHandMadeShop.Web.ViewModels.Countries
+﻿namespace MyHandMadeShop.Web.ViewModels.Countries
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
     public class CountryCreateInputModel
     {
         [Required]
