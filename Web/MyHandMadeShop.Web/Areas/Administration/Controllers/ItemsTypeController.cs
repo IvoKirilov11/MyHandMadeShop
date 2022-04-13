@@ -27,7 +27,7 @@
             return this.View(await this.dataRepository.AllWithDeleted().ToListAsync());
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(string id)
         {
             var itemType = await this.dataRepository.All()
                 .FirstOrDefaultAsync(p => p.Id == id);
@@ -58,7 +58,7 @@
             return this.View(itemType);
         }
 
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(string id)
         {
             var itemType = this.dataRepository.All().FirstOrDefault(x => x.Id == id);
             if (itemType == null)
@@ -71,7 +71,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] ItemType itemType)
+        public async Task<IActionResult> Edit(string id, [Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] ItemType itemType)
         {
             if (id != itemType.Id)
             {
@@ -103,7 +103,7 @@
             return this.View(itemType);
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             var itemType = await this.dataRepository.All()
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -118,7 +118,7 @@
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var itemType = this.dataRepository.All().FirstOrDefault(x => x.Id == id);
             this.dataRepository.Delete(itemType);
@@ -126,7 +126,7 @@
             return this.RedirectToAction(nameof(this.Index));
         }
 
-        private bool ItemTypeExists(int id)
+        private bool ItemTypeExists(string id)
         {
             return this.dataRepository.All().Any(e => e.Id == id);
         }

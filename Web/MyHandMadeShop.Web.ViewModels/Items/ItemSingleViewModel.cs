@@ -15,6 +15,9 @@
         public string Name { get; set; }
 
         [Required]
+        public string ItemTypeId { get; set; }
+
+        [Required]
         public string ItemTypeName { get; set; }
 
         public string ImageUrl { get; set; }

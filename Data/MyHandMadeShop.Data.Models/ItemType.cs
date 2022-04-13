@@ -4,7 +4,7 @@
 
     using MyHandMadeShop.Data.Common.Models;
 
-    public class ItemType : BaseDeletableModel<int>
+    public class ItemType : BaseDeletableModel<string>
     {
 
         public ItemType()

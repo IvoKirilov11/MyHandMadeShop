@@ -91,21 +91,23 @@
 
         public IEnumerable<T> GetByItemType<T>(IEnumerable<string> itemTypeId)
         {
-
             var query = this.itemsRepository.All().AsQueryable();
-
+            var result = new List<T>();
+            ;
             if (itemTypeId != null || itemTypeId.Count() > 0)
             {
 
                 foreach (var itemsTypeId in itemTypeId)
                 {
-                    query = query.Where(x => x.ItemType.Items.Any(i => i.ItemTypeId == itemsTypeId));
+                    var split = itemsTypeId.Split('/', 2);
+                    var typeId = split[0];
+                    var itemId = int.Parse(split[1]);
+                    var current = query.Where(x => x.ItemTypeId == typeId && x.Id == itemId).To<T>().ToList();
+                    result.AddRange(current);
                 }
-
-                return query.To<T>().ToList();
             }
 
-            return null;
+            return result;
         }
 
     }

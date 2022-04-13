@@ -23,11 +23,11 @@
             this.itemsServices = itemsServices;
         }
 
-        public IActionResult Buy(string input)
+        public IActionResult Buy(string input, string itemId)
         {
-
             var obj = new List<string>();
-            obj.Add(input);
+            var qString = $"{input}/{itemId}";
+            obj.Add(qString);
             var items = itemsServices
                 .GetByItemType<ItemsInListViewModel>(obj);
 
