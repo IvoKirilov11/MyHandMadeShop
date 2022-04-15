@@ -93,7 +93,7 @@
         {
             var query = this.itemsRepository.All().AsQueryable();
             var result = new List<T>();
-            ;
+
             if (itemTypeId != null || itemTypeId.Count() > 0)
             {
 

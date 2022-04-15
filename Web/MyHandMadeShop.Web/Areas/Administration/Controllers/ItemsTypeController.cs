@@ -1,5 +1,6 @@
 ﻿namespace MyHandMadeShop.Web.Areas.Administration.Controllers
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -48,6 +49,11 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] ItemType itemType)
         {
+            if (itemType is null)
+            {
+                throw new ArgumentNullException(nameof(itemType));
+            }
+
             if (this.ModelState.IsValid)
             {
                 await this.dataRepository.AddAsync(itemType);
