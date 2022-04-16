@@ -61,17 +61,6 @@
             .To<T>()
             .ToListAsync();
 
-        public async Task<IEnumerable<CityServiceModel>> GetByCountryIdAsync(int countryId)
-        {
-            var cities = this.citiesRepository
-            .All()
-            .Where(c => c.CountryId == countryId);
-            var resultCities = await cities.To<CityServiceModel>()
-            .ToListAsync();
-
-            return resultCities;
-        }
-
         public async Task<T> GetByIdAsync<T>(int id)
             => await this.citiesRepository.All()
             .Where(c => c.Id == id)

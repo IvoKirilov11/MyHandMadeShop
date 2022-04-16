@@ -11,8 +11,6 @@
 
         Task<IEnumerable<T>> GetByCountryIdAsync<T>(int countryId);
 
-        Task<IEnumerable<CityServiceModel>> GetByCountryIdAsync(int countryId);
-
         Task DeleteByCountryIdAsync(int countryId);
 
         Task<bool> CheckIfCityExistsAsync(int id);

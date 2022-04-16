@@ -19,8 +19,6 @@
         public IEnumerable<T> GetAll<T>()
         {
             return this.ordersRepository.All()
-                .Where(x => x.OrderItems.Count() >= 20)
-                .OrderBy(x => x.OrderItems.Count)
                 .To<T>().ToList();
         }
 
