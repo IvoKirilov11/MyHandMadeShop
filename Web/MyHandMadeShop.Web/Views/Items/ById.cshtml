@@ -12,11 +12,11 @@
                    
                 @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                 {
-                    
-                    
+
                         <form method="post" asp-action="Delete" id="deleteForm" asp-route-id="@Model.Id">
-                        </form>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </form>
+                       
                     
                 }
             
@@ -56,8 +56,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
