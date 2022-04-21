@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
     using MyHandMadeShop.Data.Common.Models;
 
     public class ItemType : BaseDeletableModel<string>
@@ -14,6 +14,7 @@
             this.Id = Guid.NewGuid().ToString();
         }
 
+        [Required]
         public string Name { get; set; }
 
         public ICollection<Item> Items { get; set; }

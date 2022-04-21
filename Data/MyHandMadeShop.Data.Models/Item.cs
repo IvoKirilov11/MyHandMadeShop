@@ -1,7 +1,7 @@
 ﻿namespace MyHandMadeShop.Data.Models
 {
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
     using MoiteRecepti.Data.Models;
     using MyHandMadeShop.Data.Common.Models;
 
@@ -13,12 +13,16 @@
             this.Images = new HashSet<Image>();
         }
 
+        [Required]
         public string Name { get; set; }
 
+        [Required]
+        [MinLength(30)]
         public string Description { get; set; }
 
         public decimal Price { get; set; }
 
+        [Required]
         public string ItemTypeId { get; set; }
 
         public ItemType ItemType { get; set; }

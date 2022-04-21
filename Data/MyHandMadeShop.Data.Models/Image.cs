@@ -1,7 +1,7 @@
 ﻿namespace MoiteRecepti.Data.Models
 {
     using System;
-
+    using System.ComponentModel.DataAnnotations;
     using MyHandMadeShop.Data.Common.Models;
     using MyHandMadeShop.Data.Models;
 
@@ -16,6 +16,7 @@
 
         public virtual Item Item { get; set; }
 
+        [Required]
         public string Extension { get; set; }
 
         //// The contents of the image is in the file system

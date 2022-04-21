@@ -2,12 +2,14 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Text;
 
     public class OrderItem
     {
         public int Id { get; set; }
 
+        [Required]
         public string OrderId { get; set; }
 
         public virtual Order Order { get; set; }
