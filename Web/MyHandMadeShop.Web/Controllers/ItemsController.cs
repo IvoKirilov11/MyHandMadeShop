@@ -15,7 +15,6 @@
 
     public class ItemsController : BaseController
     {
-        private readonly ApplicationDbContext db;
         private readonly IItemsTypeService itemTypeService;
         private readonly IItemsServices itemsService;
         private readonly UserManager<ApplicationUser> userManager;

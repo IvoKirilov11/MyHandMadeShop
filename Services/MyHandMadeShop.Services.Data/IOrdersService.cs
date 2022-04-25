@@ -1,5 +1,6 @@
 ﻿namespace MyHandMadeShop.Services.Data
 {
+    using MyHandMadeShop.Web.ViewModels.Orders;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 

@@ -1,10 +1,12 @@
 ﻿namespace MyHandMadeShop.Web.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using MyHandMadeShop.Data.Common.Repositories;
     using MyHandMadeShop.Data.Models;
     using MyHandMadeShop.Services.Data;
     using MyHandMadeShop.Web.ViewModels.Items;
@@ -16,13 +18,19 @@
         private readonly IOrdersService ordersService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IItemsServices itemsServices;
+        private readonly IDeletableEntityRepository<Order> dataRepository;
 
-        public OrdersController(IOrdersService ordersService, IItemsServices itemsServices)
+        public OrdersController(
+            IOrdersService ordersService,
+            IItemsServices itemsServices,
+            IDeletableEntityRepository<Order> dataRepository)
         {
             this.ordersService = ordersService;
             this.itemsServices = itemsServices;
+            this.dataRepository = dataRepository;
         }
 
+        [Authorize]
         public IActionResult Buy(string input, string itemId)
         {
             var obj = new List<string>();

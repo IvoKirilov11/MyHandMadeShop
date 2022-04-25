@@ -8,6 +8,7 @@
     using MyHandMadeShop.Web.ViewModels.ItemsType;
     using MyHandMadeShop.Web.ViewModels.Items;
     using MyHandMadeShop.Services.Data;
+    using MyHandMadeShop.Data;
 
     public class HomeController : BaseController
     {

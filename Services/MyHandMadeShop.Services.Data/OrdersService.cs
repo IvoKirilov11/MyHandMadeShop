@@ -18,15 +18,32 @@
 
         public async Task CreateOrder(string customerId, int orderId)
         {
-            var orders = new Order
-            {
-                CustomerId = customerId,
-                OrderItems = new List<OrderItem>(),
-                Id = orderId,
-            };
 
-            await ordersRepository.AddAsync(orders);
-            await ordersRepository.SaveChangesAsync();
+            var orderIdDB = ordersRepository.All().Any(x => x.Id == orderId);
+            if (!orderIdDB)
+            {
+                var orders = new Order
+                {
+                    CustomerId = customerId,
+
+                };
+
+                await ordersRepository.AddAsync(orders);
+                await ordersRepository.SaveChangesAsync();
+            }
+
+            var customerIdDB = ordersRepository.All().Any(x => x.Id.ToString() == customerId);
+            if (customerIdDB)
+            {
+                var orders = new Order
+                {
+                    CustomerId = customerId,
+
+                };
+
+                await ordersRepository.AddAsync(orders);
+                await ordersRepository.SaveChangesAsync();
+            }
         }
 
         public IEnumerable<T> GetAll<T>()

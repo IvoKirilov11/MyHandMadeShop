@@ -27,9 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MyHandMadeShop.Common\MyHandMadeShop.Common.csproj" />
-    <ProjectReference Include="..\..\Data\MyHandMadeShop.Data.Models\MyHandMadeShop.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\MyHandMadeShop.Data\MyHandMadeShop.Data.csproj" />
+    <ProjectReference Include="..\..\Data\MyHandMadeShop.Data.Models\MyHandMadeShop.Data.Models.csproj" />
+    <ProjectReference Include="..\..\MyHandMadeShop.Common\MyHandMadeShop.Common.csproj" />
     <ProjectReference Include="..\..\Services\MyHandMadeShop.Services.Data\MyHandMadeShop.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\MyHandMadeShop.Services.Mapping\MyHandMadeShop.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\MyHandMadeShop.Services.Messaging\MyHandMadeShop.Services.Messaging.csproj" />
