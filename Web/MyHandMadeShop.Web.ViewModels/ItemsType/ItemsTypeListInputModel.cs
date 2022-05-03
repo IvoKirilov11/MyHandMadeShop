@@ -7,6 +7,6 @@
 
     public class ItemsTypeListInputModel
     {
-        public IEnumerable<string> ItemsTypeId { get; set; }
+        public List<string> ItemsTypeId { get; set; }
     }
 }
