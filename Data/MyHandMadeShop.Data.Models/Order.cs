@@ -1,9 +1,8 @@
 ﻿namespace MyHandMadeShop.Data.Models
 {
-    using System;
+    using MyHandMadeShop.Data.Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using MyHandMadeShop.Data.Common.Models;
 
     public class Order : BaseDeletableModel<int>
     {
@@ -14,6 +13,8 @@
 
         [Required]
         public string CustomerId { get; set; }
+
+        public string ItemId { get; set; }
 
         public virtual ApplicationUser Customer { get; set; }
 
