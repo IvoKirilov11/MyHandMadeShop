@@ -36,7 +36,7 @@
             var obj = new List<string>();
             var qString = $"{input}/{itemId}";
             obj.Add(qString);
-            var items = itemsServices
+            var items = this.itemsServices
                 .GetByItemType<ItemsInListViewModel>(obj);
 
             if (items == null)
