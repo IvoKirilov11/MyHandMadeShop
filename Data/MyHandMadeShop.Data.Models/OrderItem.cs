@@ -10,7 +10,7 @@
         public int Id { get; set; }
 
         [Required]
-        public string OrderId { get; set; }
+        public int OrderId { get; set; }
 
         public virtual Order Order { get; set; }
 
