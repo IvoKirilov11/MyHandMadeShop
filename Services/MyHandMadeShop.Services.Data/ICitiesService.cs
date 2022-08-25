@@ -8,7 +8,6 @@
     {
         Task CreateAsync(CityCreateInputModel cityCreateInputMode);
 
-
         Task<IEnumerable<T>> GetByCountryIdAsync<T>(int countryId);
 
         Task DeleteByCountryIdAsync(int countryId);
