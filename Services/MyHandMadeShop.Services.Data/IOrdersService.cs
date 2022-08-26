@@ -8,7 +8,7 @@
     {
         IEnumerable<T> GetAll<T>();
 
-        Task CreateOrder(string customerId, string orderId);
+        Task CreateOrder(string customerId, string orderId, string itemId);
 
     }
 }

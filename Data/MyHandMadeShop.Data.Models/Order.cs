@@ -16,6 +16,8 @@
 
         public string ItemId { get; set; }
 
+        public Item Item { get; set; }
+
         public virtual ApplicationUser Customer { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }

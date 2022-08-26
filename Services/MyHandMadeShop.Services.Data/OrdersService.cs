@@ -16,7 +16,7 @@
             this.ordersRepository = ordersRepository;
         }
 
-        public async Task CreateOrder(string customerId, string orderId)
+        public async Task CreateOrder(string customerId, string orderId,string itemId)
         {
 
             var orderIdDB = ordersRepository.All().Any(x => x.Id.ToString() == orderId);
@@ -25,6 +25,7 @@
                 var orders = new Order
                 {
                     CustomerId = customerId,
+                    ItemId = itemId
 
                 };
 
