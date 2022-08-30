@@ -6,6 +6,9 @@
 
     public class CancelOrderViewModel : IMapFrom<Order>
     {
+
+        public string Name { get; set; }
+
         public int Id { get; set; }
 
     }

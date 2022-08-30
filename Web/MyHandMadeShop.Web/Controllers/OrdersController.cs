@@ -53,5 +53,15 @@
             return this.View(viewModel);
         }
 
+        public IActionResult Cancel(int id, string name)
+        {
+
+            var viewModel = new CancelOrderViewModel
+            {
+                Id = id,
+                Name = name,
+            };
+            return this.View(viewModel);
+        }
     }
 }

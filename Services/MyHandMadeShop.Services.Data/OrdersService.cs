@@ -16,34 +16,29 @@
             this.ordersRepository = ordersRepository;
         }
 
-        public async Task CreateOrder(string customerId, string orderId,string itemId)
+        public async Task CreateOrder(string customerId, string orderId, string itemId)
         {
-
-            var orderIdDB = ordersRepository.All().Any(x => x.Id.ToString() == orderId);
+            var orderIdDB = this.ordersRepository.All().Any(x => x.Id.ToString() == orderId);
             if (!orderIdDB)
             {
                 var orders = new Order
                 {
                     CustomerId = customerId,
-                    ItemId = itemId
-
+                    ItemId = itemId,
                 };
-
-                await ordersRepository.AddAsync(orders);
-                await ordersRepository.SaveChangesAsync();
+                await this.ordersRepository.AddAsync(orders);
+                await this.ordersRepository.SaveChangesAsync();
             }
 
-            var customerIdDB = ordersRepository.All().Any(x => x.Id.ToString() == customerId);
+            var customerIdDB = this.ordersRepository.All().Any(x => x.Id.ToString() == customerId);
             if (customerIdDB)
             {
                 var orders = new Order
                 {
                     CustomerId = customerId,
-
                 };
-
-                await ordersRepository.AddAsync(orders);
-                await ordersRepository.SaveChangesAsync();
+                await this.ordersRepository.AddAsync(orders);
+                await this.ordersRepository.SaveChangesAsync();
             }
         }
 
@@ -52,6 +47,5 @@
             return this.ordersRepository.All()
                 .To<T>().ToList();
         }
-
     }
 }
