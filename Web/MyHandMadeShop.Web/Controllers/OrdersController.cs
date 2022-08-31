@@ -53,12 +53,12 @@
             return this.View(viewModel);
         }
 
-        public IActionResult Cancel(int id, string name)
+        public IActionResult Cancel(int orderId, string name)
         {
 
             var viewModel = new CancelOrderViewModel
             {
-                Id = id,
+                OrderId = orderId,
                 Name = name,
             };
             return this.View(viewModel);
