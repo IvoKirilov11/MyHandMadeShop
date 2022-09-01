@@ -11,5 +11,6 @@
         public string Name { get; set; }
 
         public IEnumerable<ItemsInListViewModel> Items { get; set; }
+
     }
 }
